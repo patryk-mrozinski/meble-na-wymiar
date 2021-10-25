@@ -2,14 +2,14 @@ module.exports = {
   siteMetadata: {
     title: `Meble Na Wymiar`,
     description: `Web portfolio`,
-    copyright: 'This website is copyright 2021 Meble Na Wymiar',
+    copyright: "This website is copyright 2021 Meble Na Wymiar",
     author: `@gatsbyjs`,
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
   plugins: [
-    'gatsby-transformer-remark',
+    "gatsby-transformer-remark",
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-image`, 
+    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
@@ -35,7 +35,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/second_project/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-gatsby-cloud`,
