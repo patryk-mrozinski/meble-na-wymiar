@@ -1,29 +1,66 @@
-import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import React from "react"
+import { graphql } from "gatsby"
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Layout from "../components/Layout"
+import Project from "../components/Project"
 
-const IndexPage = () => (
-  <Layout>
-    <Seo title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
-  </Layout>
-)
+import * as styles from "../styles/home.module.css"
 
-export default IndexPage
+export default function Home({ data }) {
+  const { title, description } = data?.site?.siteMetadata || {}
+  const projects = data?.projects?.nodes || []
+
+  return (
+    <Layout>
+      <section className={styles.project}>
+        <div>
+          <h2>Prejekty: </h2>
+
+          {projects.map(project => {
+            return (
+              <Project
+                title={project.frontmatter.title}
+                images={project.frontmatter.images}
+                description={project.frontmatter.description}
+              />
+            )
+          })}
+        </div>
+        <p>
+          {title} - {description}
+        </p>
+      </section>
+    </Layout>
+  )
+}
+
+export const query = graphql`
+  query BasicInformation {
+    site {
+      siteMetadata {
+        description
+        title
+      }
+    }
+    projects: allMarkdownRemark(
+      sort: { fields: frontmatter___date, order: ASC }
+    ) {
+      nodes {
+        frontmatter {
+          description
+          title
+          images {
+            image {
+              name
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
