@@ -2,7 +2,7 @@ import React from "react"
 
 import Navbar from "../Navbar"
 
-import "../styles/global.css"
+import "../../styles/global.css"
 
 export const Layout = ({ children }) => {
   return (
