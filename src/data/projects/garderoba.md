@@ -1,10 +1,10 @@
 ---
-title: second project
-description: second test description
+title: Garderoba
+description: Jakis tekst o Garderobie
 date: 2021-09-07T01:00:00+00:00
 images: 
-- image: ../../images/second_project/gory2.jpeg
-- image: ../../images/second_project/gatsby-icon.png
+- image: ../../images/garderoba/1.jpeg
+- image: ../../images/garderoba/2.jpeg
 
 ---
 
