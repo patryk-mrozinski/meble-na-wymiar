@@ -1,27 +1,11 @@
 import React from "react"
-import { useState } from "react"
 import Description from "../components/Description"
 import Img from "gatsby-image"
 
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
-
 import Slider from "react-slick"
+import { Heading, Box, Flex } from "theme-ui"
 
 const Project = ({ title, images, description }) => {
-  const [isDiscriptionVisible, toggleDescriptionVisibility] = useState(false)
-
-  const renderSlides = () =>
-    images.map(image => {
-      return (
-        <div>
-          <Img
-            fluid={image.image.childImageSharp.fluid}
-            style={{ width: "500px" }}
-          />
-        </div>
-      )
-    })
 
   function customPaging(i) {
     return (
@@ -39,31 +23,35 @@ const Project = ({ title, images, description }) => {
     )
   }
 
-  const onButtonClick = () => {
-    toggleDescriptionVisibility(!isDiscriptionVisible)
-  }
-
   return (
-    <div>
-      <h2>{title}</h2>
-      <div>
-        <div className="App">
+    <Box>
+      <Flex sx={{ flexDirection: ["column", "row"], marginBottom: "70px" }}>
+        <Box sx={{ flexGrow: 1, maxWidth: "70%", minWidth: "auto" }}>
           <Slider
             dots={true}
             customPaging={customPaging}
             appendDots={appendDots}
+            infinite={true}
           >
-            {renderSlides()}
+            {images.map(image => {
+              return (
+                <div>
+                  <Img fluid={image.image.childImageSharp.fluid} />
+                </div>
+              )
+            })}
           </Slider>
-        </div>
+        </Box>
 
-        <div style={{ margin: "50px auto" }}>
-          <button onClick={onButtonClick}>Toggle Details</button>
+        <Box sx={{ margin: "0 15px" }}>
+          <Heading as="h2" mb="2">
+            {title}{':'}
+          </Heading>
 
-          {isDiscriptionVisible && <Description text={description} />}
-        </div>
-      </div>
-    </div>
+          <Description text={description} />
+        </Box>
+      </Flex>
+    </Box>
   )
 }
 

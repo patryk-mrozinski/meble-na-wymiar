@@ -22,7 +22,8 @@
     "react-dropdown": "^1.9.2",
     "react-helmet": "^6.1.0",
     "react-slick": "^0.28.1",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "theme-ui": "^0.12.0"
   },
   "devDependencies": {
     "prettier": "^2.3.2"
