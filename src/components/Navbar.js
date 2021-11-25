@@ -1,7 +1,10 @@
 import React from "react"
-import { Link, graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
+import { Flex, Heading, Box } from "theme-ui"
 
-const Navbar = () => {
+import NavbarLink from "./NavbarLink"
+
+const Navbar = ({ sx = {} }) => {
   const data = useStaticQuery(graphql`
     query Info {
       site {
@@ -15,15 +18,26 @@ const Navbar = () => {
   const { title } = data.site.siteMetadata
 
   return (
-    <nav>
-      <h1>{title}</h1>
+    <Flex
+      sx={{
+        margin: "0 0 21px",
+        backgroundColor: "teal",
+        padding: "21px",
+        justifyContent: "space-between",
+        alignItems: "baseline",
+        ...sx,
+      }}
+    >
+      <Heading sx={{ color: "white", textTransform: "uppercase" }}>
+        {title}
+      </Heading>
 
-      <div className="links">
-        <Link to="/">Meble Na Wymiar</Link>
-        <Link to="/projekty">Projekty</Link>
-        <Link to="/about">About</Link>
-      </div>
-    </nav>
+      <Box>
+        <NavbarLink to="/">Meble Na Wymiar</NavbarLink>
+        <NavbarLink to="/projekty">Projekty</NavbarLink>
+        <NavbarLink to="/about">About</NavbarLink>
+      </Box>
+    </Flex>
   )
 }
 
