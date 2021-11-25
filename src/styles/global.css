@@ -14,43 +14,16 @@ html,
 body {
   min-height: 100%;
 }
+
 body {
-  background: radial-gradient(
-    at top left,
-    rgb(207, 214, 238) 0%,
-    rgb(191, 239, 248) 100%
-  );
-  background-repeat: no-repeat;
+  background: white;
 }
+
 p {
   margin: 16px auto;
   line-height: 1.5em;
 }
 
-.layout {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-nav {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin: 1% 0 3%;
-  border-bottom: solid 1px teal;
-}
-nav .links {
-  display: inline-block;
-  text-align: right;
-}
-nav a {
-  display: inline-block;
-  margin-left: 20px;
-  font-weight: 400;
-  padding-bottom: 8px;
-  border-bottom: 3px solid transparent;
-}
-nav a:hover {
-  border-color: rgb(255, 4, 4);
-}
 footer p {
   text-align: center;
   color: rgb(0, 0, 0);
@@ -85,6 +58,13 @@ footer p {
 .slick-dots {
   background-color: transparent !important;
   bottom: -60px;
+}
+
+.slick-next:before {
+  color: teal;
+}
+.slick-prev:before {
+  color: teal;
 }
 
 .slick-dots ul {
